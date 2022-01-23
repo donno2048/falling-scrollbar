@@ -3,7 +3,6 @@
     <head>
         <script>
             window.onload = () => {
-                const height = document.body.clientHeight - window.innerHeight; // height of the scrollbar
                 const gravity = 9.8; // gravity constant
                 const timeFactor = 10; // time factor for the animation
                 const damping = 2; // damping factor for the falling
@@ -18,7 +17,7 @@
                     then = now;
                     place += timeFactor * velocity * deltaTime; // update the place of the scrollbar
                     velocity += timeFactor * gravity * deltaTime; // update the velocity of the scrollbar
-                    if (place >= height && velocity > 0) { // if the scrollbar hits the ground and moving down bounce it back
+                    if (place >= document.body.clientHeight - window.innerHeight + 5 && velocity > 0) { // if the scrollbar hits the ground and moving down bounce it back
                         if (velocity < minimum_velocity) { // if the scrollbar is moving down slowly
                             // window.scroll(window.scrollX, document.body.clientHeight); // scroll to the bottom
                             return; // stop the animation
